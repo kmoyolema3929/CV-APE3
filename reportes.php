@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/models/sesion.php";
+exigirSesionPagina();
 include "fpdf19/fpdf.php";
 include "models/conexion.php";
 

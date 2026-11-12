@@ -3,7 +3,8 @@ class enlacesPagina{
     public static function enlacePaginaModel($enlacesModel){
         if($enlacesModel=="nosotros" ||
         $enlacesModel=="servicios" ||
-        $enlacesModel=="contactanos")
+        $enlacesModel=="contactanos" ||
+        $enlacesModel=="login")
         {
             $modulo="views/".$enlacesModel.".php";  
         }

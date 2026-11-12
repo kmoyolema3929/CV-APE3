@@ -1,8 +1,5 @@
 <?php
-$accion = isset($_GET['accion']) ? $_GET['accion'] : 'inicio';
-if (!in_array($accion, array('inicio', 'nosotros', 'contactanos', 'servicios'))) {
-    $accion = 'inicio';
-}
+$accion = $this->paginaActual();   // 'login' si pidio una pagina protegida sin sesion
 if (!function_exists('claseActiva')) {
     function claseActiva($pagina, $actual) {
         return $pagina === $actual ? ' class="activo"' : '';
@@ -31,13 +28,17 @@ if (!function_exists('claseActiva')) {
 				<li><a href="index.php?accion=nosotros"<?php echo claseActiva('nosotros', $accion); ?>>Nosotros</a></li>
 				<li><a href="index.php?accion=contactanos"<?php echo claseActiva('contactanos', $accion); ?>>Contáctanos</a></li>
 				<li><a href="index.php?accion=servicios"<?php echo claseActiva('servicios', $accion); ?>>Servicios</a></li>
+				<?php if (isset($_SESSION['usuario'])) { ?>
+				<li><a href="index.php?accion=logout" title="Sesión de <?php echo htmlspecialchars($_SESSION['usuario'], ENT_QUOTES, 'UTF-8'); ?>">Cerrar sesión</a></li>
+				<?php } else { ?>
+				<li><a href="index.php?accion=login"<?php echo claseActiva('login', $accion); ?>>Iniciar sesión</a></li>
+				<?php } ?>
 			</ul>
 		</nav>
 
 		<section>
 			<?php
-			$mvc = new PaginasController();
-			$mvc->enlacesPaginasController();
+			$this->enlacesPaginasController();
 			?>
 		</section>
 

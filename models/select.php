@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/sesion.php";
+exigirSesionJson();
 include "conexion.php";
 $sql="select * from estudiantes";
 $respuesta=$conn->query($sql);

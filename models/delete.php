@@ -1,4 +1,6 @@
 <?php
+    require_once __DIR__ . "/sesion.php";
+    exigirSesionJson();
     include "conexion.php";
     $cedula = $_POST["cedula"];
     $sql = "delete from estudiantes where cedula = '$cedula'";

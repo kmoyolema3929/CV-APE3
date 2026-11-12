@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/models/sesion.php";
+exigirSesionPagina();
 require_once "dompdf/autoload.inc.php";
 include "models/conexion.php";
 
