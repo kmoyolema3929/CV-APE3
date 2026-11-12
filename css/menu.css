@@ -1,0 +1,51 @@
+#menu {
+    background: rgb(218, 150, 150);
+}
+
+#menu ul {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#menu ul li {
+    flex: 1;
+    list-style: none;
+    line-height: 50px;
+    text-align: center;
+}
+
+#menu ul li a {
+    display: block;
+    color: aliceblue;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+#menu ul li a:hover {
+    background: rgb(196, 120, 120);
+}
+
+#menu ul li a.activo {
+    background: rgb(176, 98, 98);
+    font-weight: bold;
+}
+
+#btnMenu {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    background: rgb(196, 120, 120);
+    color: aliceblue;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    #btnMenu { display: block; }
+    #menu ul { display: none; width: 100%; }
+    #menu ul li { display: block; }
+}

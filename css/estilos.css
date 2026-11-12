@@ -1,0 +1,51 @@
+body{
+    background: rgb(221, 225, 231);
+}
+
+header{
+    position: relative;
+    margin: auto;
+    text-align: center;
+    padding: 5px
+}
+
+nav{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    background: rgb(218, 150, 150);
+}
+
+nav ul{
+    position: relative;
+    margin: auto;
+    width: 50%;
+    text-align: none;
+}
+
+nav ul li{
+    display: inline-block;
+    width: 20%;
+    margin: auto;
+    line-height: 50px;
+    list-style: none;
+     color: aliceblue;
+}
+
+nav ul li a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+section{
+    position: relative;
+    margin: auto;
+}
+
+footer{
+    background: rgb(218, 150, 150);
+    color: aliceblue;
+    text-align: center;
+    front-size: x-large;
+}
