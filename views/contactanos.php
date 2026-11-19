@@ -1,12 +1,11 @@
 <?php
-// COMPLETAR CON LOS DATOS DE LOS INTEGRANTES DEL GRUPO
 $integrantes = array(
-    array('nombre' => 'Amaguaña Villacres Shirley Dayana', 'correo' => '', 'celular' => '', 'carrera' => ''),
-    array('nombre' => 'Coello Fuentes Leslie Elizabeth',   'correo' => '', 'celular' => '', 'carrera' => ''),
-    array('nombre' => 'Caraguay Pucha Edwin Patricio',     'correo' => '', 'celular' => '', 'carrera' => ''),
-    array('nombre' => 'Molina Alvarado Anahi Dayana',      'correo' => '', 'celular' => '', 'carrera' => ''),
-    array('nombre' => 'Moyolema Criollo Katherine Lissette', 'correo' => '', 'celular' => '', 'carrera' => ''),
-    array('nombre' => 'Toapanta Paucar Pablo Daniel',      'correo' => '', 'celular' => '', 'carrera' => ''),
+    array('nombre' => 'Amaguaña Villacres Shirley Dayana',   'correo' => 'samaguana6126@uta.edu.ec', 'celular' => '0990939632', 'carrera' => 'Software'),
+    array('nombre' => 'Coello Fuentes Leslie Elizabeth',     'correo' => 'lcoello2518@uta.edu.ec',   'celular' => '0984825774', 'carrera' => 'Software'),
+    array('nombre' => 'Caraguay Pucha Edwin Patricio',       'correo' => 'ecaraguay7405@uta.edu.ec', 'celular' => '0983192516', 'carrera' => 'Software'),
+    array('nombre' => 'Molina Alvarado Anahi Dayana',        'correo' => 'amolina4130@uta.edu.ec',   'celular' => '0998534009', 'carrera' => 'Software'),
+    array('nombre' => 'Moyolema Criollo Katherine Lissette', 'correo' => 'kmoyolema3929@uta.edu.ec', 'celular' => '0984987096', 'carrera' => 'Software'),
+    array('nombre' => 'Toapanta Paucar Pablo Daniel',        'correo' => 'ptoapanta1032@uta.edu.ec', 'celular' => '0987476259', 'carrera' => 'Software'),
 );
 
 if (!function_exists('ctDato')) {
