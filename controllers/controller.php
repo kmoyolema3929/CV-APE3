@@ -8,8 +8,18 @@
         // Inicia o cierra sesion. Se llama en index.php ANTES de mostrar HTML
         public function procesarSesion(){
             $accion = isset($_GET['accion']) ? $_GET['accion'] : '';
+            $conSesion = haySesion();   // aqui se detecta el cierre por inactividad
+
+            // Lo pide el navegador cuando pasa el tiempo sin actividad
+            if ($accion === 'inactividad') {
+                header("Location: index.php?accion=" . ($conSesion ? 'inicio' : 'login'));
+                exit;
+            }
 
             if ($accion === 'logout') {
+                if ($conSesion) {
+                    registrarAuditoria($_SESSION['usuario'], 'CIERRE_SESION');
+                }
                 $_SESSION = array();
                 if (ini_get("session.use_cookies")) {
                     $p = session_get_cookie_params();
@@ -23,14 +33,17 @@
             if ($accion === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 $usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
                 $clave = isset($_POST['clave']) ? $_POST['clave'] : '';
-                $nombre = Usuario::validar($usuario, $clave);
-                if ($nombre !== false) {
+                $r = Usuario::validar($usuario, $clave);
+                if ($r['ok']) {
                     session_regenerate_id(true);
-                    $_SESSION['usuario'] = $nombre;
+                    $_SESSION['usuario'] = $r['usuario'];
+                    $_SESSION['hora_login'] = date('H:i:s');
+                    $_SESSION['ultima_actividad'] = time();
+                    registrarAuditoria($r['usuario'], 'INGRESO');
                     header("Location: index.php?accion=" . $this->destinoLogin());
                     exit;
                 }
-                $this->errorLogin = "Usuario o contraseña incorrectos";
+                $this->errorLogin = $r['mensaje'];
             }
         }
 
@@ -52,7 +65,7 @@
             if (!in_array($accion, array('inicio', 'nosotros', 'contactanos', 'servicios', 'login'))) {
                 $accion = 'inicio';
             }
-            $conSesion = isset($_SESSION['usuario']);
+            $conSesion = haySesion();
             if (in_array($accion, $this->protegidas) && !$conSesion) {
                 $accion = 'login';
             }
@@ -66,6 +79,8 @@
             $accion = $this->paginaActual();
             $error = $this->errorLogin;          // los usa views/login.php
             $destino = $this->destinoLogin();    // los usa views/login.php
+            $aviso = isset($_SESSION['aviso']) ? $_SESSION['aviso'] : '';   // aviso de inactividad
+            unset($_SESSION['aviso']);
             $respuesta=enlacesPagina::enlacePaginaModel($accion);
             include $respuesta;
         }

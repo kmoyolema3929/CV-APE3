@@ -6,11 +6,15 @@
     .login-caja button { width: 100%; margin-top: 18px; padding: 10px; border: 0; border-radius: 4px; background: rgb(176, 98, 98); color: #fff; font-size: 16px; cursor: pointer; }
     .login-caja button:hover { background: rgb(150, 80, 80); }
     .login-error { background: #f8d7da; color: #842029; padding: 10px; border-radius: 4px; margin-bottom: 10px; }
+    .login-aviso { background: #fff3cd; color: #664d03; padding: 10px; border-radius: 4px; margin-bottom: 10px; }
 </style>
 
 <div class="login-caja">
     <h2>Iniciar sesión</h2>
     <p>Para ver la información de los estudiantes debes iniciar sesión.</p>
+    <?php if ($aviso !== '') { ?>
+        <div class="login-aviso"><?php echo htmlspecialchars($aviso, ENT_QUOTES, 'UTF-8'); ?></div>
+    <?php } ?>
     <?php if ($error !== '') { ?>
         <div class="login-error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
     <?php } ?>
