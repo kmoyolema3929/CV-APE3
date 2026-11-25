@@ -1,0 +1,12 @@
+USE cuartoa;
+
+DROP TABLE IF EXISTS auditoria;
+
+CREATE TABLE auditoria (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(50) NOT NULL,
+  accion VARCHAR(30) NOT NULL,
+  fecha_hora DATETIME NOT NULL,
+  id_sesion VARCHAR(20) NULL,
+  ip VARCHAR(45) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
